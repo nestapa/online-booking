@@ -1,6 +1,16 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GejalaController;
+use App\Http\Controllers\GejalaKePenyakitController;
+use App\Http\Controllers\GejalaRuleController;
+use App\Http\Controllers\KeputusanRuleController;
+use App\Http\Controllers\PenyakitController;
+use App\Http\Controllers\PenyakitKeGejalaController;
+use App\Http\Controllers\RuleController;
+use App\Http\Controllers\TampilGejalaController;
+use App\Http\Controllers\TampilPenyakitController;
+use App\Http\Controllers\TampilRuleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +29,31 @@ Route::get('/', function () {
     return view('pages.auth.login');
 })->middleware(['guest']);
 
-Route::middleware(['auth', 'verified'])->group(function() {
+// matikan route ini jika .env email sudah di seting
+Route::get('/forgot-password', function () {
+    return redirect()->back();
+})->name('password.request')->middleware(['guest']);
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::put('/change-profile-avatar', [DashboardController::class, 'changeAvatar'])->name('change-profile-avatar');
     Route::delete('/remove-profile-avatar', [DashboardController::class, 'removeAvatar'])->name('remove-profile-avatar');
 
-    Route::middleware(['can:admin'])->group(function() {
-        Route::resource('user', UserController::class);
+    // route untuk superadmin jika diperlukan
+    // Route::middleware(['can:superadmin'])->group(function () {
+    //     Route::resources([
+    //         'user' => UserController::class,
+    //     ]);
+    // });
+
+    // route untuk admin
+    Route::middleware(['can:admin'])->group(function () {
+        //
+    });
+
+    // route untuk user
+    Route::middleware(['can:user'])->group(function () {
+        //
     });
 });

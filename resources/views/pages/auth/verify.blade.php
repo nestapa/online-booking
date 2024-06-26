@@ -3,40 +3,43 @@
 @section('title', 'Register')
 
 @section('content')
-    <section class="section">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-4">
-                    <div class="login-brand">
-                        <img src="../assets/img/stisla-fill.svg" alt="logo" width="100"
-                            class="shadow-light rounded-circle">
+<section class="section">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4">
+                <div class="login-brand">
+                    <img src="{{ asset('assets/img/icon.png') }}" class="icon mb-3" alt="icon">
+                    <p class="font-weight-bold text-primary" style="font-size:16px;">{{ env('APP_FULLNAME') }}</p>
+                </div>
+                @if (session('status') == 'verification-link-sent')
+                <div class="mb-4 alert alert-success">
+                    Email baru telah dikirim ke email anda
+                </div>
+                @endif
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Email anda belum verifikasi</h4>
                     </div>
-                    @if (session('status') == 'verification-link-sent')
-                        <div class="mb-4 alert alert-success">
-                            A new email verification link has been emailed to you!
-                        </div>
-                    @endif
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h4>Your email isn't verified</h4>
-                        </div>
-                        <div class="card-body">
-                            <p>please check your email and go to the link for email verification.</p>
-                            <div class="form-group">
-                                <form action="{{ route('verification.send') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                        Resend Verification Email
-                                    </button>
-                                </form>
-                            </div>
+                    <div class="card-body">
+                        <p>tolong cek email anda dan klik link untuk verifikasi email.</p>
+                        <div class="form-group">
+                            <form action="{{ route('verification.send') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    Kirim Ulang Verifikasi Email
+                                </button>
+                            </form>
                         </div>
                     </div>
-                    <div class="simple-footer">
-                        Copyright {{ date('Y') }} &copy; {{ env('APP_NAME') }} &bull; Theme by Stisla
-                    </div>
+                </div>
+                <div class="mt-5 text-muted text-center">
+                    Sudah Punya Akun? <a href="{{ route('login') }}">Login</a>
+                </div>
+                <div class="simple-footer">
+                    Copyright 2024 &copy; {{ env('APP_NAME') }}.
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection

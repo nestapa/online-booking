@@ -1,37 +1,38 @@
 @extends('layouts.app')
 
-@section('title', 'Manage Users')
-@section('desc', ' On this page you can manage users. ')
+@section('title', 'Kelola User')
+@section('desc', ' Dihalaman ini anda bisa kelola user. ')
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <h4>User List</h4>
-            <div class="card-header-action">
-                <a href="{{ route('user.create') }}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i>
-                    Add New
-                </a>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped w-100" id="datatable">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Photo</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+<div class="card">
+    <div class="card-header">
+        <h4>List User</h4>
+        <div class="card-header-action">
+            <a href="{{ route('user.create') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+                Tambah
+            </a>
         </div>
     </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped w-100" id="datatable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Avatar</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('scripts')
@@ -60,34 +61,34 @@
                 {data: 'username', name: 'username'},
                 {data: 'role', name: 'role'},
                 {data: 'email_verified_at', name: 'email_verified_at'},
+                {data: 'aksi', name: 'aksi'},
             ],
             columnDefs: [{
                 "targets": 1,
                 "render": function(data, type, row, meta) {
-                    let img = `assets/img/avatar/avatar-5.png`;
+                    let img = `assets/img/avatar/avatar-1.png`;
                     if(data) {
                         img = `storage/${data}`;
                     }
 
-                    return `<img alt="image" src="{{ asset('/') }}${img}" class="rounded-circle" width="35">`;
+                    return `<img alt="avatar" src="{{ asset('/') }}${img}" class="rounded-circle" width="35">`;
                 }
             },{
-                "targets": 2,
+                "targets": -1,
                 "render": function(data, type, row, meta) {
                     return `
-                        ${data}
-                        <form action="{{ url('/user') }}/${row.id}" method="POST" class="table-links">
+                        <form action="{{ url('/user') }}/${row.id}" method="POST" class="d-flex">
                             @method('DELETE')
                             @csrf
                             <a
                                 href="{{ url('/user') }}/${row.id}/edit"
-                                class="btn btn-sm"
+                                class="btn btn-sm btn-warning mr-2"
                             >
                                 Edit
                             </a>
                             <button
                                 type="submit"
-                                class="text-danger btn-delete btn btn-sm"
+                                class="btn-delete btn btn-sm btn-danger"
                             >
                                 Delete
                             </button>
@@ -95,12 +96,12 @@
                     `;
                 }
             },{
-                "targets": -1,
+                "targets": -2,
                 "render": function(data, type, row, meta) {
                     if(data){
-                        return `<div class="badge badge-success">Verified</div>`;
+                        return `<div class="badge badge-success">verifikasi</div>`;
                     } else {
-                        return `<div class="badge badge-danger">Unverified</div>`;
+                        return `<div class="badge badge-danger">Belum verifikasi</div>`;
                     }
                 }
             }],

@@ -16,11 +16,11 @@
     <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             @if(auth()->user()->avatar)
-                <img alt="image" src="{{ asset('storage/'.auth()->user()->avatar) }}" class="rounded-circle mr-1">
+            <img alt="avatar" src="{{ asset('storage/'.auth()->user()->avatar) }}" class="rounded-circle mr-1">
             @else
-                <img alt="image" src="{{ asset('/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+            <img alt="avatar" src="{{ asset('/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
             @endif
-            <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name; }}</div>
+            <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
             <a href="{{ route('profile') }}" class="dropdown-item has-icon {{ Route::is('profile*') ? 'active' : '' }}">
@@ -28,10 +28,7 @@
             </a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button
-                    type="submit"
-                    class="dropdown-item has-icon text-danger btn-logout"
-                >
+                <button type="submit" class="dropdown-item has-icon text-danger btn-logout">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </form>

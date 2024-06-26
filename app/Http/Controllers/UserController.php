@@ -17,8 +17,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
-            $query = User::whereNot('role', 'superadmin')->get();
+        if ($request->ajax()) {
+            $query = User::whereNot('role', 'admin')->get();
             return DataTables::of($query)->make();
         }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $item = User::findOrFail($id);
 
-        return view('pages.user.edit',[
+        return view('pages.user.edit', [
             'item'  =>  $item
         ]);
     }
@@ -89,14 +89,14 @@ class UserController extends Controller
             'username' => $request->username,
         ];
 
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $path = "avatar/";
-            $oldfile = $path.basename($user->avatar);
+            $oldfile = $path . basename($user->avatar);
             Storage::disk('public')->delete($oldfile);
             $data['avatar'] = Storage::disk('public')->put($path, $request->file('avatar'));
         }
 
-        if($request->password){
+        if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }
 

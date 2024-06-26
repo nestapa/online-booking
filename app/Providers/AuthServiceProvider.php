@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Gate;
 class AuthServiceProvider extends ServiceProvider
 {
     private static $permissions = [
+        // buat role permission disini
+        // tambahkan superadmin jika diperlukan
         'admin' => ['admin'],
         'user' => ['user'],
     ];
@@ -29,17 +31,18 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::before(function(User $user) {
-            if($user->role === 'superadmin') {
-                return true;
-            }
-        });
+        // aktifkan ini jika ingin superadmin bisa semua role (syarat: superadmin tidak usah di tambahkan dirole permission)
+        // Gate::before(function(User $user) {
+        //     if($user->role === 'superadmin') {
+        //         return true;
+        //     }
+        // });
 
-        foreach(self::$permissions as $action => $roles) {
-            Gate::define($action, function(User $user) use ($roles) {
-               if(in_array($user->role, $roles)) {
-                return true;
-               }
+        foreach (self::$permissions as $action => $roles) {
+            Gate::define($action, function (User $user) use ($roles) {
+                if (in_array($user->role, $roles)) {
+                    return true;
+                }
             });
         }
     }

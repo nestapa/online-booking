@@ -49,7 +49,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // route untuk admin
     Route::middleware(['can:admin'])->group(function () {
-        //
+        Route::resources([
+            'user' => UserController::class,
+        ]);
     });
 
     // route untuk user

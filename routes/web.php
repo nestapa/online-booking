@@ -1,16 +1,6 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GejalaController;
-use App\Http\Controllers\GejalaKePenyakitController;
-use App\Http\Controllers\GejalaRuleController;
-use App\Http\Controllers\KeputusanRuleController;
-use App\Http\Controllers\PenyakitController;
-use App\Http\Controllers\PenyakitKeGejalaController;
-use App\Http\Controllers\RuleController;
-use App\Http\Controllers\TampilGejalaController;
-use App\Http\Controllers\TampilPenyakitController;
-use App\Http\Controllers\TampilRuleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 

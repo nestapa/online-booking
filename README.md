@@ -82,5 +82,3 @@ Insert gif or link to demo
 License M. Amal Ikhsani
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/amalkoding/laravel_fortify_stisla)
-
-tolol

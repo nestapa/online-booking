@@ -18,6 +18,16 @@
         /* Colors */
         --colors: #000;
         --shadow: #eee;
+        --text: #ccff33;
+    }
+
+    .bg-text {
+        background-color: var(--text);
+    }
+
+    a:hover {
+        color: var(--text);
+        text-decoration: underline;
     }
 
     .navbar .dropdown-item.has-icon i {

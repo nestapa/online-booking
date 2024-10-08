@@ -21,6 +21,10 @@
         --text: #ccff33;
     }
 
+    .text-text {
+        color: var(--text) !important;
+    }
+
     .bg-text {
         background-color: var(--text);
     }

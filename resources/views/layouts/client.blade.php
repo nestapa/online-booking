@@ -10,25 +10,20 @@
     @stack('styles')
 </head>
 
-<body>
+<body class="layout-3">
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
+        <div class="">
+            <div class="navbar-bg" style="position: fixed; z-index: 100;"></div>
 
-            <nav class="navbar navbar-expand-lg main-navbar">
-                @include('includes.navbar')
+
+            <nav class="navbar navbar-expand-lg main-navbar" style="position: fixed; z-index: 100;">
+                @include('includes.navbar_client')
             </nav>
 
-            <div class="main-sidebar sidebar-style-2">
-                @include('includes.sidebar')
-            </div>
-
             <!-- Main Content -->
-            <div class="main-content">
+            <div class="main-content-client" style="min-height: 85vh">
                 <section class="section">
                     <div class="section-body">
-                        <h2 class="section-title">@yield('title')</h2>
-                        <p class="section-lead">@yield('desc')</p>
                         @yield('content')
                     </div>
                 </section>

@@ -41,6 +41,30 @@
                 <span>Kelola User</span>
             </a>
         </li>
+        <li class="{{ Route::is('products*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('products.index') }}">
+                <i class="fas fa-users"></i>
+                <span>Kelola Products</span>
+            </a>
+        </li>
+        <li class="{{ Route::is('metode*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('metode.index') }}">
+                <i class="fas fa-users"></i>
+                <span>Kelola Metode</span>
+            </a>
+        </li>
+        <li class="{{ Route::is('voucher*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('voucher.index') }}">
+                <i class="fas fa-users"></i>
+                <span>Kelola Voucher</span>
+            </a>
+        </li>
+        <li class="{{ Route::is('transaksis*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('transaksis.index') }}">
+                <i class="fas fa-users"></i>
+                <span>Kelola Transaksis</span>
+            </a>
+        </li>
         @endcan
 
         {{-- sidebar user  --}}

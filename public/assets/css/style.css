@@ -1837,28 +1837,29 @@ h6 .badge {
 .btn-primary,
 .btn-primary.disabled {
     box-shadow: 0 2px 6px var(--shadow);
-    background-color: var(--colors);
-    border-color: var(--colors);
+    background-color: var(--text);
+    border-color: var(--text);
+    color: var(--colors);
 }
 .btn-primary:focus,
 .btn-primary.disabled:focus {
-    background-color: var(--colors) !important;
+    background-color: var(--text) !important;
 }
 .btn-primary:focus:active,
 .btn-primary.disabled:focus:active {
-    background-color: var(--colors) !important;
+    background-color: var(--text) !important;
 }
 .btn-primary:active,
 .btn-primary:hover,
 .btn-primary.disabled:active,
 .btn-primary.disabled:hover {
-    background-color: var(--colors) !important;
+    background-color: var(--text) !important;
 }
 
 .btn-outline-primary,
 .btn-outline-primary.disabled {
-    border-color: var(--colors);
-    color: var(--colors);
+    border-color: var(--text);
+    color: var(--text);
 }
 .btn-outline-primary:hover,
 .btn-outline-primary:focus,
@@ -1866,7 +1867,7 @@ h6 .badge {
 .btn-outline-primary.disabled:hover,
 .btn-outline-primary.disabled:focus,
 .btn-outline-primary.disabled:active {
-    background-color: var(--colors) !important;
+    background-color: var(--text) !important;
     color: #fff;
 }
 
@@ -3187,7 +3188,7 @@ pre {
     border-radius: 5px;
     height: 8px;
     width: 30px;
-    background-color: var(--colors);
+    background-color: var(--text);
     display: inline-block;
     float: left;
     margin-top: 6px;
@@ -3852,6 +3853,14 @@ body.layout-3 .main-footer {
 .main-content {
     padding-left: 280px;
     padding-right: 30px;
+    padding-top: 80px;
+    width: 100%;
+    position: relative;
+}
+
+.main-content-client {
+    padding-left: 100px;
+    padding-right: 100px;
     padding-top: 80px;
     width: 100%;
     position: relative;

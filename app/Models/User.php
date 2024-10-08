@@ -47,11 +47,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    function user_poin(){
+    function user_poin()
+    {
         return $this->hasOne(UserPoin::class, 'user_id', 'id');
     }
 
-    function user_voucher(){
+    function user_voucher()
+    {
         return $this->hasOne(UserVoucher::class, 'user_id', 'id');
+    }
+
+    function ulasan()
+    {
+        return $this->hasOne(Ulasan::class, 'user_id', 'id');
     }
 }

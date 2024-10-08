@@ -65,6 +65,12 @@
                 <span>Kelola Transaksis</span>
             </a>
         </li>
+        <li class="{{ Route::is('ulasan*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('ulasan.index') }}">
+                <i class="fas fa-users"></i>
+                <span>Kelola Ulasan</span>
+            </a>
+        </li>
         @endcan
 
         {{-- sidebar user  --}}

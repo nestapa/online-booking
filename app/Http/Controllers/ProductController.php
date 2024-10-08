@@ -13,7 +13,7 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
 
-        public function index(Request $request)
+    public function index(Request $request)
     {
         if ($request->ajax()) {
             $query = Product::get();

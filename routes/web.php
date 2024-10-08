@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MetodePembayaranController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'metode' => MetodePembayaranController::class,
             'voucher' => VoucherController::class,
             'transaksis' => TransaksiController::class,
+            'ulasan' => UlasanController::class,
         ]);
     });
 

@@ -12,7 +12,7 @@
                 @method('PUT')
                 @csrf
                 <div class="card-header">
-                    <h4>Edit Profil</h4>
+                    <h4>Edits Profil</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
